@@ -31,7 +31,9 @@ public class Task2 {
 
                     if (score > bestScore.get()) {
                         bestScore.set(score);
-                        bestSoftware = new StringBuffer(software.name);
+                        synchronized (bestScore) {
+                            bestSoftware = new StringBuffer(software.name);
+                        }
                     }
 
                     System.out.printf("Software: %s, Score: %d%n", software.name, score);
